@@ -19,9 +19,20 @@ A content-based recommender using TF-IDF and cosine similarity, enhanced with OM
 pip install -r requirements.txt
 streamlit run app/app.py
 ```
+## 📸 Application Preview
+
+<div align="center">
+  <img src="app/assets/app-screenshot-1.png" width="45%">
+  <img src="app/assets/app-screenshot-2.png" width="45%">
+  <img src="app/assets/app-screenshot-3.png" width="45%">
+  <br>
+  <em>Left: Main interface | Right: Recommendation results</em>
+</div>
 
 ## Sample Output
-![Demo](assets/demo.gif)  <!-- Add screenshot -->
+![Demo](assets/demo.gif) 
+
+ <!-- Add screenshot -->
 
 ## Future Work
 - [ ] Add user ratings (Hybrid Filtering)
