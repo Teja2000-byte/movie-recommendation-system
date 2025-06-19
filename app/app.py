@@ -10,7 +10,21 @@ from PIL import Image
 from io import BytesIO
 # In app.py
 import os
-API_KEY = os.environ.get("OMDB_KEY")  # Set in environment variables
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Get the parent directory path
+parent_dir = Path(__file__).parent.parent
+
+# Load .env file from parent directory
+env_path = parent_dir / ".env"
+if env_path.exists():
+    load_dotenv(dotenv_path=env_path)
+else:
+    st.error(".env file not found in parent directory!")
+    st.stop()
+
+API_KEY = os.getenv("OMDB_KEY")
 
 # Fix for MacOS
 nltk.download('stopwords', download_dir='/tmp/nltk_data')
@@ -25,7 +39,7 @@ st.write("Type a movie name to get similar recommendations")
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv('movies.csv')
+    df = pd.read_csv('data/movies.csv')
     data = df[['title','genres','keywords','overview','cast','director']]
     data = data.dropna()
     data['combined'] = data['genres'] + ' ' + data['keywords'] + ' ' + data['overview'] + ' ' + data['cast'] + ' ' + data['director']
